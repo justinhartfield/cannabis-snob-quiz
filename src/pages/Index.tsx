@@ -2,12 +2,18 @@
 import React, { useState } from 'react';
 import CannabisQuiz from '@/components/CannabisQuiz/CannabisQuiz';
 import NewsletterCTA from '@/components/NewsletterCTA';
+import { Home } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const Index = () => {
   const [showQuiz, setShowQuiz] = useState(false);
   
   const handleImageClick = () => {
     setShowQuiz(true);
+  };
+  
+  const handleHomeClick = () => {
+    setShowQuiz(false);
   };
   
   return (
@@ -26,6 +32,19 @@ const Index = () => {
           />
         </a>
       </div>
+
+      {/* Persistent home button - fixed at bottom right */}
+      {showQuiz && (
+        <Button
+          variant="outline"
+          size="icon"
+          className="fixed bottom-4 right-4 z-50 rounded-full shadow-md bg-white hover:bg-weed-light-green"
+          onClick={handleHomeClick}
+          aria-label="Go to home"
+        >
+          <Home className="h-5 w-5 text-weed-green" />
+        </Button>
+      )}
 
       {!showQuiz ? (
         <div className="flex flex-col items-center w-full">
