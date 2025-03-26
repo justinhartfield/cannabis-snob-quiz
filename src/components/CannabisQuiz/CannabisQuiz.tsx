@@ -69,15 +69,12 @@ const CannabisQuiz: React.FC = () => {
         );
       case QuizState.RESULT:
         return (
-          <>
-            <QuizResult
-              result={getResult()}
-              score={score}
-              totalQuestions={quizQuestions.length}
-              onRestart={handleStart}
-            />
-            <EmbedCode />
-          </>
+          <QuizResult
+            result={getResult()}
+            score={score}
+            totalQuestions={quizQuestions.length}
+            onRestart={handleStart}
+          />
         );
     }
   };
@@ -85,6 +82,7 @@ const CannabisQuiz: React.FC = () => {
   return (
     <div className="quiz-card max-w-xl mx-auto p-6">
       {renderContent()}
+      <EmbedCode />
     </div>
   );
 };
