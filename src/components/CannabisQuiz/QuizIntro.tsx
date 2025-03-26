@@ -19,7 +19,7 @@ const QuizIntro: React.FC<QuizIntroProps> = ({ onStart }) => {
       
       <Button 
         onClick={onStart}
-        className="bg-quiz-accent hover:bg-quiz-highlight text-white transition-all"
+        className="bg-[#2c5623] hover:bg-[#224519] text-white text-lg py-6 px-10 rounded-full transition-all shadow-md"
       >
         Test starten
       </Button>
