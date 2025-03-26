@@ -1,7 +1,9 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { QuizResult as QuizResultType } from './quizData';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Check, Copy } from 'lucide-react';
 
 interface QuizResultProps {
   result: QuizResultType;
@@ -37,6 +39,8 @@ const QuizResult: React.FC<QuizResultProps> = ({
 }) => {
   const circleRef = useRef<SVGCircleElement>(null);
   const percentage = Math.round((score / totalQuestions) * 100);
+  const [copied, setCopied] = useState(false);
+  const couponCode = "CANNABISNOB50";
   
   // Select a random GIF based on score category
   const getRandomGif = () => {
@@ -57,6 +61,12 @@ const QuizResult: React.FC<QuizResultProps> = ({
       circleRef.current.style.setProperty('--score-offset', `${scoreOffset}`);
     }
   }, [percentage]);
+
+  const handleCopyCode = () => {
+    navigator.clipboard.writeText(couponCode);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className="text-center animate-scale-in">
@@ -110,6 +120,28 @@ const QuizResult: React.FC<QuizResultProps> = ({
       <p className="text-quiz-secondary mb-6">
         {result.description}
       </p>
+      
+      {/* Coupon Code Section */}
+      <div className="mb-8 p-4 bg-gradient-to-r from-green-100 to-green-50 rounded-lg shadow-sm">
+        <h3 className="text-lg font-bold text-green-800 mb-2">Dein Cannabis Experten Rabatt</h3>
+        <p className="text-sm text-green-700 mb-3">Sichere dir 50% Rabatt auf dein nächstes Rezept bei WEED.de</p>
+        
+        <div className="flex gap-2">
+          <Input
+            value={couponCode}
+            readOnly
+            className="text-center font-mono font-bold text-green-800 bg-white border-green-300"
+          />
+          <Button
+            onClick={handleCopyCode}
+            className="bg-green-600 hover:bg-green-700 text-white"
+            size="icon"
+            type="button"
+          >
+            {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+          </Button>
+        </div>
+      </div>
       
       <Button 
         onClick={onRestart}
