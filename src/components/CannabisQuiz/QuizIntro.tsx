@@ -8,7 +8,7 @@ interface QuizIntroProps {
 
 const QuizIntro: React.FC<QuizIntroProps> = ({ onStart }) => {
   return (
-    <div className="text-center animate-scale-in py-10">
+    <div className="text-center animate-scale-in">
       <h2 className="text-2xl sm:text-3xl font-bold text-quiz-primary mb-2">
         Der Cannabis-Snob-Test
       </h2>
@@ -19,9 +19,9 @@ const QuizIntro: React.FC<QuizIntroProps> = ({ onStart }) => {
       
       <Button 
         onClick={onStart}
-        className="bg-[#2c5623] hover:bg-[#224519] text-white text-lg py-6 px-10 rounded-full transition-all shadow-md"
+        className="bg-quiz-accent hover:bg-quiz-highlight text-white transition-all"
       >
-        Start Quiz
+        Test starten
       </Button>
     </div>
   );
