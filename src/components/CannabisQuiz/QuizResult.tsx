@@ -4,6 +4,7 @@ import { QuizResult as QuizResultType } from './quizData';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Check, Copy } from 'lucide-react';
+import ShareOnSocial from './ShareOnSocial';
 
 interface QuizResultProps {
   result: QuizResultType;
@@ -120,6 +121,16 @@ const QuizResult: React.FC<QuizResultProps> = ({
       <p className="text-quiz-secondary mb-6">
         {result.description}
       </p>
+      
+      {/* Share your result section */}
+      <ShareOnSocial 
+        result={{
+          title: result.title,
+          score: score,
+          totalQuestions: totalQuestions
+        }} 
+        isQuizComplete={true} 
+      />
       
       {/* Coupon Code Section */}
       <div className="mb-8 p-4 bg-gradient-to-r from-green-100 to-green-50 rounded-lg shadow-sm">

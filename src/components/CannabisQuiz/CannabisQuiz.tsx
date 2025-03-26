@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { quizQuestions, quizResults, QuizResult as QuizResultType } from './quizData';
 import QuizQuestion from './QuizQuestion';
 import QuizResult from './QuizResult';
-import EmbedCode from './EmbedCode';
+import ShareOnSocial from './ShareOnSocial';
 
 enum QuizState {
   QUESTION,
@@ -61,6 +61,10 @@ const CannabisQuiz: React.FC = () => {
               question={quizQuestions[currentQuestionIndex]}
               onAnswer={handleAnswer}
             />
+            <ShareOnSocial 
+              currentQuestion={quizQuestions[currentQuestionIndex].question}
+              isQuizComplete={false}
+            />
           </div>
         );
       case QuizState.RESULT:
@@ -78,7 +82,6 @@ const CannabisQuiz: React.FC = () => {
   return (
     <div className="quiz-card max-w-xl mx-auto p-6">
       {renderContent()}
-      <EmbedCode />
     </div>
   );
 };
