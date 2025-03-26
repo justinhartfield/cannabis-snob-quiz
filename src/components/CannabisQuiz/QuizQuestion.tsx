@@ -61,10 +61,9 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ question, onAnswer }) => {
         </div>
       )}
       
-      {!isRevealed && (
+      {selectedOptionId !== null && !isRevealed && (
         <Button
           className="w-full transition-all bg-quiz-accent hover:bg-quiz-highlight text-white"
-          disabled={!selectedOptionId}
           onClick={handleSubmit}
         >
           Weiter
