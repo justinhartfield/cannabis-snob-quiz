@@ -61,9 +61,6 @@ const CannabisQuiz: React.FC = () => {
                 }}
               />
             </div>
-            <div className="text-right text-sm text-gray-500 dark:text-gray-400 mb-2">
-              Frage {currentQuestionIndex + 1} von {quizQuestions.length}
-            </div>
             <QuizQuestion
               question={quizQuestions[currentQuestionIndex]}
               onAnswer={handleAnswer}
@@ -86,7 +83,7 @@ const CannabisQuiz: React.FC = () => {
   };
   
   return (
-    <div className="quiz-card max-w-xl mx-auto">
+    <div className="quiz-card max-w-xl mx-auto p-6">
       {renderContent()}
     </div>
   );
