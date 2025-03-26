@@ -31,7 +31,7 @@ export const quizQuestions: QuizQuestion[] = [
       },
       {
         id: "q1-b",
-        text: "sagst „Gras ist Gras" und nimmst es gerne an.",
+        text: "sagst \"Gras ist Gras\" und nimmst es gerne an.",
         isCorrect: false
       },
       {
@@ -106,11 +106,11 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "q4",
-    question: "Was antwortest du, wenn jemand sagt: „Gras schmeckt doch immer gleich."?",
+    question: "Was antwortest du, wenn jemand sagt: \"Gras schmeckt doch immer gleich.\"?",
     options: [
       {
         id: "q4-a",
-        text: "„Da stimme ich voll und ganz zu, Bruder."",
+        text: "\"Da stimme ich voll und ganz zu, Bruder.\"",
         isCorrect: false
       },
       {
@@ -120,7 +120,7 @@ export const quizQuestions: QuizQuestion[] = [
       },
       {
         id: "q4-c",
-        text: "„Na ja, irgendwie stimmt das schon."",
+        text: "\"Na ja, irgendwie stimmt das schon.\"",
         isCorrect: false
       },
       {
@@ -143,12 +143,12 @@ export const quizQuestions: QuizQuestion[] = [
       },
       {
         id: "q5-b",
-        text: "Jede Sorte „Kush" nennen.",
+        text: "Jede Sorte \"Kush\" nennen.",
         isCorrect: false
       },
       {
         id: "q5-c",
-        text: "Der Satz „Gras ist Gras".",
+        text: "Der Satz \"Gras ist Gras\".",
         isCorrect: false
       },
       {
@@ -166,17 +166,17 @@ export const quizQuestions: QuizQuestion[] = [
     options: [
       {
         id: "q6-a",
-        text: "„Was ist das Günstigste, das ihr habt?"",
+        text: "\"Was ist das Günstigste, das ihr habt?\"",
         isCorrect: false
       },
       {
         id: "q6-b",
-        text: "‚Was ist gut?"",
+        text: "\"Was ist gut?\"",
         isCorrect: false
       },
       {
         id: "q6-c",
-        text: "'Welche Terpene sind in euren Top-Sorten enthalten?"",
+        text: "\"Welche Terpene sind in euren Top-Sorten enthalten?\"",
         isCorrect: true
       },
       {
@@ -194,7 +194,7 @@ export const quizQuestions: QuizQuestion[] = [
     options: [
       {
         id: "q7-a",
-        text: "„... billig und reichlich vorhanden sein."",
+        text: "\"... billig und reichlich vorhanden sein.\"",
         isCorrect: false
       },
       {
@@ -204,12 +204,12 @@ export const quizQuestions: QuizQuestion[] = [
       },
       {
         id: "q7-c",
-        text: "„Was auch immer ich bekommen kann."",
+        text: "\"Was auch immer ich bekommen kann.\"",
         isCorrect: false
       },
       {
         id: "q7-d",
-        text: "‚Es ist wirklich egal."",
+        text: "\"Es ist wirklich egal.\"",
         isCorrect: false
       }
     ],
@@ -218,31 +218,31 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: "q8",
-    question: "Wenn dein Dealer „Feuer" simst, ist dein erster Gedanke:",
+    question: "Wenn dein Dealer \"Feuer\" simst, ist dein erster Gedanke:",
     options: [
       {
         id: "q8-a",
-        text: "„Oh gut, klingt echt."",
+        text: "\"Oh gut, klingt echt.\"",
         isCorrect: false
       },
       {
         id: "q8-b",
-        text: "„Toll. Noch eine bedeutungslose Beschreibung."",
+        text: "\"Toll. Noch eine bedeutungslose Beschreibung.\"",
         isCorrect: true
       },
       {
         id: "q8-c",
-        text: "‚Zeit, in großen Mengen zu kaufen!"",
+        text: "\"Zeit, in großen Mengen zu kaufen!\"",
         isCorrect: false
       },
       {
         id: "q8-d",
-        text: "'Das ist ein cooler Sortenname."",
+        text: "\"Das ist ein cooler Sortenname.\"",
         isCorrect: false
       }
     ],
-    feedbackCorrect: "‚Fire' sagt dir absolut nichts. Respektiere dich selbst.",
-    feedbackIncorrect: "‚Fire' sagt dir absolut nichts. Respektiere dich selbst."
+    feedbackCorrect: "\"Fire\" sagt dir absolut nichts. Respektiere dich selbst.",
+    feedbackIncorrect: "\"Fire\" sagt dir absolut nichts. Respektiere dich selbst."
   },
   {
     id: "q9",
@@ -277,7 +277,7 @@ export const quizQuestions: QuizQuestion[] = [
 export const quizResults: QuizResult[] = [
   {
     scoreRange: [0, 3],
-    title: "Halte dich an die „Feuer"-Angebote deines Dealers.",
+    title: "Halte dich an die \"Feuer\"-Angebote deines Dealers.",
     description: "Unsere App könnte dich erschreckend weit fortgeschritten finden."
   },
   {
