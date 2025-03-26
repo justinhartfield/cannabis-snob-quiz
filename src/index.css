@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,5 +98,49 @@
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
+}
+
+@layer components {
+  .quiz-option {
+    @apply relative flex items-center space-x-3 px-4 py-3 rounded-md transition-all 
+    bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700
+    hover:border-quiz-highlight hover:shadow-md;
+  }
+  
+  .quiz-option.selected {
+    @apply border-quiz-accent bg-quiz-light dark:bg-gray-700;
+  }
+  
+  .quiz-option.correct {
+    @apply border-green-500 bg-green-50 dark:bg-green-900/20;
+  }
+  
+  .quiz-option.incorrect {
+    @apply border-red-500 bg-red-50 dark:bg-red-900/20;
+  }
+  
+  .quiz-card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden
+    border border-gray-200 dark:border-gray-700 backdrop-blur-sm
+    transition-all duration-300 ease-in-out;
+  }
+  
+  .quiz-progress-bar {
+    @apply h-1 w-full bg-gray-200 dark:bg-gray-700 overflow-hidden rounded-full;
+  }
+  
+  .quiz-progress-bar-fill {
+    @apply h-full bg-quiz-accent transition-all duration-500 ease-out;
+  }
+}
+
+.quiz-score-circle {
+  fill: none;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke-dasharray: 100;
 }
