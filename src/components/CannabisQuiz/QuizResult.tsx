@@ -12,23 +12,23 @@ interface QuizResultProps {
   onRestart: () => void;
 }
 
-// Fun GIFs for each score category
+// Fun GIFs for each score category - updated with reliable sources
 const lowScoreGifs = [
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXV1bHA5MnA1aGdleXFyZjJnaG8ybzNoeXF5a2lmbmpobmd2MHZ6ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jnQYWZ0T4mkhCmkzcn/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnRkaW8xMTQ2cGFobHZxeHk0ejlqbXdnNXMxYnRmbDlqbDRsNmx5byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oz8xLd9DJq2l2VFtu/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWF5MGJqbWxsYnAydjBpZDZ2MXlnNWJjeWFyZm1lYm1icHBjazJvayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0HlDRuNBcCCuBBDO/giphy.gif",
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXdyZWFmN2ZweXN5dzM2dTEwbmhiaG43OGxnbGZzNGlweWoyZmtsMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WJjLyXCVvro2I/giphy.gif", // facepalm
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGk3ajN2bzV2ejJ4cDU0YzZiZjF0Nnlid2F6Nzl4MnVmN3l3NG1qOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKqnN349PBUtGFO/giphy.gif", // not good
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcm0zdWVmMjYzaG42YzZkZDV2aDRuMWxja3RzcnB2bnJiNnQ2eHk3biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT5LMUnO4g3ySm3wjK/giphy.gif", // disappointed
 ];
 
 const mediumScoreGifs = [
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjA3dXVvcHdjOW1tYnoxdDNkNDV2bW9ldnowNzMxcmNicDM0NWp4dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kdLyU5mq9mGfKWpIVh/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY0a3VvZngzZGlzY3dwaGk4ZXQydnRzYTFxbHczMXhnZDQ1bm1yNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RLWwOuPbqObupogOLB/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExamFpN3I5YWpvczkzYW40Nm4yM2ZzMXI4aTgxZ2xhNTJnMmJrZTFieiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT5LMRL7KSqp1wZoLm/giphy.gif",
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWVrZmN0Mmt6ZW1xZHd2NmRhMHNnZjJvOTVhbWdkN3VmbGk5aGEwZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l4FGnnlIwVYIgunDy/giphy.gif", // good job
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmM5bXY5czEwdmF1Z244YzcwNGxhcWdmbm1qMnlmeDdrZml2c2dneiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7rj2ZgttvgomY/giphy.gif", // thumbs up
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjB0Z3QxOWdtZWIwZzg5NGUwZGZuZnB4azZ1ZXdqNHJ5MGJrNDdrbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xUOxf7IfQeahXbsNUc/giphy.gif", // not bad
 ];
 
 const highScoreGifs = [
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjVzOWUyOG8ydGs1aDV1c3JtdjZ5dGpvOGZucnB3aXhyYXFsYmNyaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1wX5TF83zc9cTbTQvT/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjB6YTNmNjc5NDUzZHh6dXJrdWQzOG41eDl1cDQ4aGtvcXZkeDE0aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XreQmk7ETCak0/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXRoOWRkamdkbWIzMmlzbWZ3c3d6Y24xM3pjeHdvOGUzaDc1dzl5YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/W9WSk4tEU1aJW/giphy.gif",
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNThrN3kwdjAwNGhuYmR0MDk0bjA0YnY2eXpkMGM3Mmp1cW4yYmpsdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jJQC2puVZpTMO4vGs0/giphy.gif", // celebration
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExenducWxndXUwdXU1Y2NhcmQ1YTQweGt5czV6cnh0Z3Fsb2RtamdxbixlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZWbeEcbeo0cKI/giphy.gif", // impressed
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExemRsMXB1Mnk3aGxtYmxreWpqdHU5czlodDRvbGthcG11Y2RzZ2RmNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3otPoUjcQZUkpJyHwk/giphy.gif", // mind blown
 ];
 
 const QuizResult: React.FC<QuizResultProps> = ({
