@@ -53,7 +53,7 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ question, onAnswer }) => {
 
   return (
     <div className="animate-fade-in">
-      <h3 className="text-xl sm:text-2xl font-medium text-quiz-primary mb-4">
+      <h3 className="text-xl sm:text-2xl font-semibold text-weed-dark mb-4 font-weed">
         {question.question}
       </h3>
       
@@ -70,14 +70,14 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ question, onAnswer }) => {
       </div>
       
       {feedback && (
-        <div className="text-sm italic text-quiz-secondary mb-4 animate-fade-in">
+        <div className="text-sm italic text-weed-gray mb-4 animate-fade-in font-weed">
           {feedback}
         </div>
       )}
       
       {selectedOptionId !== null && !isRevealed && !isSubmitting && (
         <Button
-          className="w-full transition-all bg-quiz-accent hover:bg-quiz-highlight text-white"
+          className="w-full transition-all bg-weed-green hover:bg-weed-dark-green text-white font-weed font-medium"
           onClick={handleSubmit}
         >
           Weiter

@@ -69,6 +69,14 @@ export default {
 					accent: '#496e5d',
 					light: '#f4f6f8',
 					highlight: '#6c8d7c'
+				},
+				weed: {
+					'green': '#82C926',
+					'dark-green': '#69A320',
+					'light-green': '#EFFAE3',
+					'dark': '#2B2D42',
+					'gray': '#5E6472',
+					'light-gray': '#F8F9FA'
 				}
 			},
 			borderRadius: {

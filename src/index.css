@@ -3,6 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -99,6 +101,7 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Montserrat', sans-serif;
   }
 }
 
@@ -106,15 +109,15 @@
   .quiz-option {
     @apply relative flex items-center space-x-3 px-4 py-3 rounded-md transition-all 
     bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700
-    hover:border-quiz-highlight hover:shadow-md;
+    hover:border-weed-green hover:shadow-md font-weed;
   }
   
   .quiz-option.selected {
-    @apply border-quiz-accent bg-quiz-light dark:bg-gray-700;
+    @apply border-weed-green bg-weed-light-green dark:bg-gray-700;
   }
   
   .quiz-option.correct {
-    @apply border-green-500 bg-green-50 dark:bg-green-900/20;
+    @apply border-weed-green bg-weed-light-green/40 dark:bg-green-900/20;
   }
   
   .quiz-option.incorrect {
@@ -132,7 +135,11 @@
   }
   
   .quiz-progress-bar-fill {
-    @apply h-full bg-quiz-accent transition-all duration-500 ease-out;
+    @apply h-full bg-weed-green transition-all duration-500 ease-out;
+  }
+
+  .font-weed {
+    font-family: 'Montserrat', sans-serif;
   }
 }
 
