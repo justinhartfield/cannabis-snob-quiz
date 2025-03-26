@@ -12,7 +12,11 @@
   to = "/index.html"
   status = 200
 
-# Custom domain configuration
 [build.environment]
   NETLIFY_SITE_NAME = "cannabisnob.de"
 
+[[headers]]
+  for = "/*"
+    [headers.values]
+    X-Frame-Options = "ALLOW-FROM https://cannabisnob.de"
+    Content-Security-Policy = "frame-ancestors 'self' https://cannabisnob.de"
