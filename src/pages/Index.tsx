@@ -1,23 +1,33 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import CannabisQuiz from '@/components/CannabisQuiz/CannabisQuiz';
+import EmbedCode from '@/components/CannabisQuiz/EmbedCode';
 
 const Index = () => {
+  const [showQuiz, setShowQuiz] = useState(false);
+  
+  const handleImageClick = () => {
+    setShowQuiz(true);
+  };
+  
   return (
-    <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 px-4 py-12">
-      <header className="mb-8 text-center max-w-2xl">
-        <h1 className="text-3xl sm:text-4xl font-bold text-quiz-primary mb-4">
-          Cannabis-Snob-Quiz Widget
-        </h1>
-        <p className="text-quiz-secondary">
-          Ein elegantes, einbettbares Quiz-Widget, das du auf deiner Website verwenden kannst, 
-          um herauszufinden, ob deine Besucher echte Cannabis-Kenner sind.
-        </p>
-      </header>
+    <div className="min-h-screen flex flex-col items-center bg-white px-4 py-6">
+      {!showQuiz ? (
+        <img 
+          src="/lovable-uploads/ec67627e-e66f-4239-80e1-2e1be7b1ef7d.png" 
+          alt="Cannabis Snob Quiz" 
+          onClick={handleImageClick}
+          className="w-full max-w-2xl cursor-pointer hover:opacity-95 transition-opacity rounded-lg shadow-md"
+        />
+      ) : (
+        <main className="w-full max-w-xl mb-8">
+          <CannabisQuiz />
+        </main>
+      )}
       
-      <main className="w-full max-w-xl mb-8">
-        <CannabisQuiz />
-      </main>
+      <div className="w-full max-w-xl mt-8">
+        <EmbedCode />
+      </div>
       
       <footer className="text-center mt-auto pt-8 flex flex-col items-center gap-2">
         <p className="text-sm text-quiz-secondary">
