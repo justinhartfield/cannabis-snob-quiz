@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import CannabisQuiz from '@/components/CannabisQuiz/CannabisQuiz';
-import EmbedCode from '@/components/CannabisQuiz/EmbedCode';
 
 const Index = () => {
   const [showQuiz, setShowQuiz] = useState(false);
@@ -24,10 +23,6 @@ const Index = () => {
           <CannabisQuiz />
         </main>
       )}
-      
-      <div className="w-full max-w-xl mt-8">
-        <EmbedCode />
-      </div>
       
       <footer className="text-center mt-auto pt-8 flex flex-col items-center gap-2">
         <p className="text-sm text-quiz-secondary">
