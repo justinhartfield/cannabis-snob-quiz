@@ -6,14 +6,13 @@
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
+  NETLIFY_SITE_ID = "07d44dc2-bbad-45c5-a2bf-89796ab67348"
+  NETLIFY_SITE_NAME = "cannabisnob.de"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[build.environment]
-  NETLIFY_SITE_NAME = "cannabisnob.de"
 
 [[headers]]
   for = "/*"
