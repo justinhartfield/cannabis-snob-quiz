@@ -106,11 +106,11 @@
   .quiz-option {
     @apply relative flex items-center space-x-3 px-4 py-3 rounded-md transition-all 
     bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700
-    hover:border-quiz-highlight hover:shadow-md;
+    hover:border-[#6c8d7c] hover:shadow-md;
   }
   
   .quiz-option.selected {
-    @apply border-quiz-accent bg-quiz-light dark:bg-gray-700;
+    @apply border-[#496e5d] bg-[#f0f5f3] dark:bg-[#2c3e38];
   }
   
   .quiz-option.correct {
@@ -122,17 +122,17 @@
   }
   
   .quiz-card {
-    @apply bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden
-    border border-gray-200 dark:border-gray-700 backdrop-blur-sm
+    @apply bg-white dark:bg-gray-800 rounded-xl overflow-hidden
+    backdrop-blur-sm
     transition-all duration-300 ease-in-out;
   }
   
   .quiz-progress-bar {
-    @apply h-1 w-full bg-gray-200 dark:bg-gray-700 overflow-hidden rounded-full;
+    @apply h-1.5 w-full bg-gray-200 dark:bg-gray-700 overflow-hidden rounded-full;
   }
   
   .quiz-progress-bar-fill {
-    @apply h-full bg-quiz-accent transition-all duration-500 ease-out;
+    @apply h-full bg-[#496e5d] transition-all duration-500 ease-out;
   }
 }
 

@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { QuizResult as QuizResultType } from './quizData';
 import { Button } from '@/components/ui/button';
+import { RefreshCw, Share2 } from 'lucide-react';
 
 interface QuizResultProps {
   result: QuizResultType;
@@ -28,8 +29,8 @@ const QuizResult: React.FC<QuizResultProps> = ({
 
   return (
     <div className="text-center animate-scale-in">
-      <div className="mb-6 flex justify-center">
-        <div className="relative w-40 h-40">
+      <div className="mb-8 flex justify-center">
+        <div className="relative w-44 h-44">
           <svg className="w-full h-full" viewBox="0 0 100 100">
             <circle
               className="quiz-score-circle"
@@ -47,35 +48,57 @@ const QuizResult: React.FC<QuizResultProps> = ({
               stroke={
                 percentage < 33 ? "#ef4444" : 
                 percentage < 66 ? "#f59e0b" : 
-                "#10b981"
+                "#496e5d"
               }
             />
           </svg>
           <div className="absolute inset-0 flex items-center justify-center">
             <div>
-              <div className="text-3xl font-bold text-quiz-primary">
+              <div className="text-4xl font-bold text-[#1a2e35] dark:text-white">
                 {score}/{totalQuestions}
               </div>
-              <div className="text-sm text-quiz-secondary">Punkte</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">Punkte</div>
             </div>
           </div>
         </div>
       </div>
 
-      <h2 className="text-2xl font-bold text-quiz-primary mb-2">
-        {result.title}
-      </h2>
+      <div className="bg-[#f0f5f3] dark:bg-gray-700 rounded-lg p-6 mb-8">
+        <h2 className="text-2xl font-bold text-[#1a2e35] dark:text-white mb-3">
+          {result.title}
+        </h2>
+        
+        <p className="text-gray-600 dark:text-gray-300 mb-0">
+          {result.description}
+        </p>
+      </div>
       
-      <p className="text-quiz-secondary mb-6">
-        {result.description}
-      </p>
-      
-      <Button 
-        onClick={onRestart}
-        className="bg-quiz-accent hover:bg-quiz-highlight text-white transition-all"
-      >
-        Test wiederholen
-      </Button>
+      <div className="flex flex-col sm:flex-row justify-center gap-4">
+        <Button 
+          onClick={onRestart}
+          className="bg-[#496e5d] hover:bg-[#345c4b] text-white transition-all rounded-lg"
+        >
+          <RefreshCw className="mr-2 h-4 w-4" />
+          Test wiederholen
+        </Button>
+        
+        <Button 
+          onClick={() => {
+            if (navigator.share) {
+              navigator.share({
+                title: 'Cannabis-Snob-Test',
+                text: `Ich habe ${score} von ${totalQuestions} Punkten im Cannabis-Snob-Test erreicht! Teste dein Wissen auch!`,
+                url: window.location.href,
+              });
+            }
+          }}
+          variant="outline"
+          className="border-[#496e5d] text-[#496e5d] hover:bg-[#f0f5f3] dark:border-[#6c8d7c] dark:text-[#6c8d7c] dark:hover:bg-[#2c3e38] transition-all rounded-lg"
+        >
+          <Share2 className="mr-2 h-4 w-4" />
+          Ergebnis teilen
+        </Button>
+      </div>
     </div>
   );
 };
