@@ -30,7 +30,7 @@ const Index = () => {
           className="flex items-center gap-2 text-weed-green hover:text-weed-dark-green transition-colors"
         >
           <img 
-            src="https://i.imgur.com/C4R4h3Z.png" 
+            src="https://www.weed.de/_next/image?url=%2Fimages%2Flogo%2FweedLogoWhite.png&w=520&q=75" 
             alt="Weed.de Logo" 
             className="h-6" 
           />
