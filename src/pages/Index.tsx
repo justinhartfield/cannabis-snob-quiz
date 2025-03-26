@@ -42,6 +42,15 @@ const Index = () => {
               />
               <span className="font-weed font-medium">Powered by Weed!</span>
             </a>
+            
+            {/* New Weed logo with text below the footer */}
+            <div className="mt-4">
+              <img 
+                src="https://www.weed.de/_next/image?url=%2Fimages%2Flogo%2FweedLogoWithText.png&w=520&q=75" 
+                alt="Weed.de Full Logo" 
+                className="h-10 sm:h-12" 
+              />
+            </div>
           </footer>
         </div>
       )}
