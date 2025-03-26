@@ -12,11 +12,13 @@ interface QuizQuestionProps {
 
 const QuizQuestion: React.FC<QuizQuestionProps> = ({ question, onAnswer }) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [showFeedback, setShowFeedback] = useState(false);
   const { toast } = useToast();
   const isMobile = useIsMobile();
   
   const handleOptionSelect = (optionId: string, isCorrect: boolean) => {
     setSelectedOption(optionId);
+    setShowFeedback(true);
     
     // Display feedback toast
     const feedbackText = isCorrect 
@@ -32,6 +34,7 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ question, onAnswer }) => {
     setTimeout(() => {
       onAnswer(question.id, optionId, isCorrect);
       setSelectedOption(null); // Reset for next question
+      setShowFeedback(false);
     }, 1200);
   };
   
@@ -47,6 +50,7 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ question, onAnswer }) => {
             option={option}
             isSelected={selectedOption === option.id}
             isDisabled={selectedOption !== null}
+            showFeedback={showFeedback}
             onSelect={() => handleOptionSelect(option.id, option.isCorrect)}
           />
         ))}
