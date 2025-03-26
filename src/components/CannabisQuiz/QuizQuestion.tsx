@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { QuizQuestion as QuizQuestionType } from './quizData';
 import QuizOption from './QuizOption';
 import { Button } from '@/components/ui/button';
@@ -13,17 +13,30 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ question, onAnswer }) => {
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
   const [isRevealed, setIsRevealed] = useState(false);
   const [feedback, setFeedback] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Reset state when question changes
+  useEffect(() => {
+    setSelectedOptionId(null);
+    setIsRevealed(false);
+    setFeedback(null);
+    setIsSubmitting(false);
+  }, [question.id]);
 
   const handleOptionSelect = (optionId: string) => {
-    if (isRevealed) return;
+    if (isRevealed || isSubmitting) return;
     setSelectedOptionId(optionId);
   };
 
   const handleSubmit = () => {
-    if (!selectedOptionId) return;
+    if (!selectedOptionId || isSubmitting) return;
     
+    setIsSubmitting(true);
     const selectedOption = question.options.find(option => option.id === selectedOptionId);
-    if (!selectedOption) return;
+    if (!selectedOption) {
+      setIsSubmitting(false);
+      return;
+    }
     
     setIsRevealed(true);
     setFeedback(
@@ -32,6 +45,7 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ question, onAnswer }) => {
         : question.feedbackIncorrect
     );
     
+    // Ensure we only call onAnswer once
     setTimeout(() => {
       onAnswer(question.id, selectedOptionId, selectedOption.isCorrect);
     }, 1500);
@@ -61,7 +75,7 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ question, onAnswer }) => {
         </div>
       )}
       
-      {selectedOptionId !== null && !isRevealed && (
+      {selectedOptionId !== null && !isRevealed && !isSubmitting && (
         <Button
           className="w-full transition-all bg-quiz-accent hover:bg-quiz-highlight text-white"
           onClick={handleSubmit}
