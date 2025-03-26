@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Facebook, Twitter, Share2, Instagram } from 'lucide-react';
+import { Facebook, Twitter, Share2, Instagram, TikTok, Snapchat } from 'lucide-react';
 
 interface ShareOnSocialProps {
   result?: {
@@ -36,7 +36,7 @@ const ShareOnSocial: React.FC<ShareOnSocialProps> = ({
     window.open(url, '_blank', 'width=600,height=400');
   };
   
-  const shareOnTwitter = () => {
+  const shareOnX = () => {
     const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
     window.open(url, '_blank', 'width=600,height=400');
   };
@@ -44,6 +44,17 @@ const ShareOnSocial: React.FC<ShareOnSocialProps> = ({
   const shareOnInstagram = () => {
     // Instagram doesn't support direct link sharing, so we'll provide instructions
     alert("Instagram unterstützt keine direkte Link-Teilen-Funktion. Kopiere den Link und teile ihn in deiner Instagram-Story oder deinem Profil.");
+    navigator.clipboard.writeText(shareText);
+  };
+  
+  const shareOnTikTok = () => {
+    // TikTok doesn't have a direct share API like other platforms
+    alert("TikTok unterstützt keine direkte Link-Teilen-Funktion. Kopiere den Link und teile ihn in deinem TikTok-Video oder Profil.");
+    navigator.clipboard.writeText(shareText);
+  };
+  
+  const shareOnSnapchat = () => {
+    alert("Snapchat unterstützt keine direkte Link-Teilen-Funktion. Kopiere den Link und teile ihn in deinem Snap.");
     navigator.clipboard.writeText(shareText);
   };
   
@@ -73,12 +84,12 @@ const ShareOnSocial: React.FC<ShareOnSocialProps> = ({
         </Button>
         
         <Button 
-          onClick={shareOnTwitter}
+          onClick={shareOnX}
           className="bg-black hover:bg-gray-800 text-white"
           size="sm"
         >
           <Twitter className="h-4 w-4 mr-2" />
-          Twitter
+          X
         </Button>
         
         <Button 
@@ -88,6 +99,24 @@ const ShareOnSocial: React.FC<ShareOnSocialProps> = ({
         >
           <Instagram className="h-4 w-4 mr-2" />
           Instagram
+        </Button>
+        
+        <Button 
+          onClick={shareOnTikTok}
+          className="bg-black hover:bg-gray-800 text-white"
+          size="sm"
+        >
+          <TikTok className="h-4 w-4 mr-2" />
+          TikTok
+        </Button>
+        
+        <Button 
+          onClick={shareOnSnapchat}
+          className="bg-[#FFFC00] hover:opacity-90 text-black"
+          size="sm"
+        >
+          <Snapchat className="h-4 w-4 mr-2" />
+          Snapchat
         </Button>
       </div>
     </div>
