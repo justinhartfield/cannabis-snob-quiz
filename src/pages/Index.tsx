@@ -12,6 +12,21 @@ const Index = () => {
   
   return (
     <div className="min-h-screen flex flex-col items-center bg-white px-4 py-6">
+      {/* Weed.de logo at the very top */}
+      <div className="w-full flex justify-center mb-6">
+        <a 
+          href="https://weed.de" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          <img 
+            src="https://www.weed.de/_next/image?url=%2Fimages%2Flogo%2FweedLogoWithText.png&w=520&q=75" 
+            alt="Weed.de Full Logo" 
+            className="h-10 sm:h-12 hover:opacity-90 transition-opacity" 
+          />
+        </a>
+      </div>
+
       {!showQuiz ? (
         <div className="flex flex-col items-center w-full">
           <img 
@@ -20,21 +35,6 @@ const Index = () => {
             onClick={handleImageClick}
             className="w-full max-w-2xl cursor-pointer hover:opacity-95 transition-opacity rounded-lg shadow-md mb-4"
           />
-          
-          {/* Added Weed logo with text below the main image - now with hyperlink */}
-          <div className="mt-4 mb-8">
-            <a 
-              href="https://weed.de" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <img 
-                src="https://www.weed.de/_next/image?url=%2Fimages%2Flogo%2FweedLogoWithText.png&w=520&q=75" 
-                alt="Weed.de Full Logo" 
-                className="h-10 sm:h-12 hover:opacity-90 transition-opacity" 
-              />
-            </a>
-          </div>
         </div>
       ) : (
         <div className="w-full max-w-xl mb-8 flex flex-col items-center">
@@ -59,21 +59,6 @@ const Index = () => {
               />
               <span className="font-weed font-medium">Powered by Weed!</span>
             </a>
-            
-            {/* New Weed logo with text below the footer - now with hyperlink */}
-            <div className="mt-4">
-              <a 
-                href="https://weed.de" 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                <img 
-                  src="https://www.weed.de/_next/image?url=%2Fimages%2Flogo%2FweedLogoWithText.png&w=520&q=75" 
-                  alt="Weed.de Full Logo" 
-                  className="h-10 sm:h-12 hover:opacity-90 transition-opacity" 
-                />
-              </a>
-            </div>
           </footer>
         </div>
       )}
