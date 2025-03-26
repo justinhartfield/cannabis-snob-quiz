@@ -21,13 +21,19 @@ const Index = () => {
             className="w-full max-w-2xl cursor-pointer hover:opacity-95 transition-opacity rounded-lg shadow-md mb-4"
           />
           
-          {/* Added Weed logo with text below the main image */}
+          {/* Added Weed logo with text below the main image - now with hyperlink */}
           <div className="mt-4 mb-8">
-            <img 
-              src="https://www.weed.de/_next/image?url=%2Fimages%2Flogo%2FweedLogoWithText.png&w=520&q=75" 
-              alt="Weed.de Full Logo" 
-              className="h-10 sm:h-12" 
-            />
+            <a 
+              href="https://weed.de" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <img 
+                src="https://www.weed.de/_next/image?url=%2Fimages%2Flogo%2FweedLogoWithText.png&w=520&q=75" 
+                alt="Weed.de Full Logo" 
+                className="h-10 sm:h-12 hover:opacity-90 transition-opacity" 
+              />
+            </a>
           </div>
         </div>
       ) : (
@@ -54,13 +60,19 @@ const Index = () => {
               <span className="font-weed font-medium">Powered by Weed!</span>
             </a>
             
-            {/* New Weed logo with text below the footer */}
+            {/* New Weed logo with text below the footer - now with hyperlink */}
             <div className="mt-4">
-              <img 
-                src="https://www.weed.de/_next/image?url=%2Fimages%2Flogo%2FweedLogoWithText.png&w=520&q=75" 
-                alt="Weed.de Full Logo" 
-                className="h-10 sm:h-12" 
-              />
+              <a 
+                href="https://weed.de" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <img 
+                  src="https://www.weed.de/_next/image?url=%2Fimages%2Flogo%2FweedLogoWithText.png&w=520&q=75" 
+                  alt="Weed.de Full Logo" 
+                  className="h-10 sm:h-12 hover:opacity-90 transition-opacity" 
+                />
+              </a>
             </div>
           </footer>
         </div>
