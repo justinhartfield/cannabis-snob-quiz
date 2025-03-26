@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Check, Copy } from 'lucide-react';
@@ -6,7 +5,7 @@ import { Check, Copy } from 'lucide-react';
 const EmbedCode: React.FC = () => {
   const [copied, setCopied] = useState(false);
   
-  const embedCode = `<iframe src="https://cannabisnob.de" width="100%" height="600" style="border:none;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1)" title="Cannabis Snob Quiz"></iframe>`;
+  const embedCode = `<iframe src="https://cannabissnob.de" width="100%" height="600" style="border:none;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1)" title="Cannabis Snob Quiz"></iframe>`;
   
   const copyToClipboard = () => {
     navigator.clipboard.writeText(embedCode);

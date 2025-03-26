@@ -21,7 +21,7 @@ This project is set up for deployment on Netlify:
 2. Netlify will automatically detect the build settings from netlify.toml
 3. Deploy!
 
-The site will be live at [cannabisnob.de](https://cannabisnob.de)
+The site will be live at [cannabissnob.de](https://cannabissnob.de)
 
 ## Features
 

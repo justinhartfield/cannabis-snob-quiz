@@ -7,7 +7,7 @@
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
   NETLIFY_SITE_ID = "07d44dc2-bbad-45c5-a2bf-89796ab67348"
-  NETLIFY_SITE_NAME = "cannabisnob.de"
+  NETLIFY_SITE_NAME = "cannabissnob.de"
 
 [[redirects]]
   from = "/*"
@@ -17,5 +17,5 @@
 [[headers]]
   for = "/*"
     [headers.values]
-    X-Frame-Options = "ALLOW-FROM https://cannabisnob.de"
-    Content-Security-Policy = "frame-ancestors 'self' https://cannabisnob.de"
+    X-Frame-Options = "ALLOW-FROM https://cannabissnob.de"
+    Content-Security-Policy = "frame-ancestors 'self' https://cannabissnob.de"
