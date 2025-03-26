@@ -6,7 +6,7 @@ import { Check } from 'lucide-react';
 const EmbedCode: React.FC = () => {
   const [copied, setCopied] = useState(false);
   
-  const embedCode = `<iframe src="https://lovable.dev/projects/4819821c-a733-4f03-b04d-bf2ff9351d85" width="100%" height="600" style="border:none;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1)" title="Cannabis Snob Quiz"></iframe>`;
+  const embedCode = `<iframe src="https://cannabisnob.de" width="100%" height="600" style="border:none;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1)" title="Cannabis Snob Quiz"></iframe>`;
   
   const copyToClipboard = () => {
     navigator.clipboard.writeText(embedCode);
