@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Check } from 'lucide-react';
+import { Check, Copy } from 'lucide-react';
 
 const EmbedCode: React.FC = () => {
   const [copied, setCopied] = useState(false);
@@ -27,9 +27,9 @@ const EmbedCode: React.FC = () => {
         <Button
           size="sm"
           onClick={copyToClipboard}
-          className="absolute right-2 top-2 bg-quiz-accent hover:bg-quiz-highlight text-white h-8"
+          className="absolute right-2 top-2 bg-black hover:bg-gray-800 text-white font-medium rounded-full h-8 px-4 flex items-center gap-2"
         >
-          {copied ? <Check className="h-4 w-4 mr-1" /> : null}
+          {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
           {copied ? "Kopiert" : "Kopieren"}
         </Button>
       </div>
