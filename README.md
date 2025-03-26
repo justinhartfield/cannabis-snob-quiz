@@ -1,69 +1,41 @@
-# Welcome to your Lovable project
 
-## Project info
+# Cannabis Snob Quiz
 
-**URL**: https://lovable.dev/projects/4819821c-a733-4f03-b04d-bf2ff9351d85
+A fun interactive quiz to test your cannabis knowledge, built with React, TypeScript, and Tailwind CSS.
 
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/4819821c-a733-4f03-b04d-bf2ff9351d85) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Local Development
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Install dependencies
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+This project is set up for deployment on Netlify:
 
-**Use GitHub Codespaces**
+1. Connect your GitHub repository to Netlify
+2. Netlify will automatically detect the build settings from netlify.toml
+3. Deploy!
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The site will be live at [cannabisnob.de](https://cannabisnob.de)
 
-## What technologies are used for this project?
+## Features
 
-This project is built with .
+- Interactive quiz with multiple-choice questions
+- Score tracking and result categorization
+- Fun animated GIFs based on score
+- Discount coupon code for WEED.de
+- Fully responsive design for all devices
+- Easy embedding on other websites
 
-- Vite
-- TypeScript
+## Technology Stack
+
 - React
-- shadcn-ui
+- TypeScript
 - Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/4819821c-a733-4f03-b04d-bf2ff9351d85) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+- Vite
+- shadcn/ui components
