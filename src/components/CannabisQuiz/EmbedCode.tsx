@@ -17,11 +17,11 @@ const EmbedCode: React.FC = () => {
   return (
     <div className="mt-8 p-4 bg-gray-50 dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700">
       <h3 className="text-lg font-medium mb-2 text-quiz-primary">Quiz einbetten</h3>
-      <p className="text-sm text-quiz-secondary mb-3">
+      <p className="text-sm text-quiz-secondary mb-3 break-words">
         Kopiere diesen Code, um den Quiz auf deiner Website einzubetten:
       </p>
       <div className="relative">
-        <pre className="bg-white dark:bg-gray-900 p-3 rounded text-xs sm:text-sm overflow-x-auto border border-gray-200 dark:border-gray-700">
+        <pre className="bg-white dark:bg-gray-900 p-3 rounded text-xs sm:text-sm overflow-x-auto border border-gray-200 dark:border-gray-700 whitespace-pre-wrap break-all">
           {embedCode}
         </pre>
         <Button
