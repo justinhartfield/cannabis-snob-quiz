@@ -8,13 +8,21 @@ interface QuizIntroProps {
 
 const QuizIntro: React.FC<QuizIntroProps> = ({ onStart }) => {
   return (
-    <div className="w-full h-screen">
-      <img 
-        src="/lovable-uploads/7eb64c3a-ba32-4b30-9070-b65886e7ed12.png" 
-        alt="Cannabis Quiz" 
-        className="w-full h-full object-contain"
+    <div className="text-center animate-scale-in">
+      <h2 className="text-2xl sm:text-3xl font-bold text-quiz-primary mb-2">
+        Der Cannabis-Snob-Test
+      </h2>
+      
+      <p className="text-quiz-secondary mb-6">
+        Glaubst du, du gehörst zur Cannabis-Königsklasse? Das werden wir sehen. Willkommen beim Weed.de Cannabis-Snob-Test.
+      </p>
+      
+      <Button 
         onClick={onStart}
-      />
+        className="bg-quiz-accent hover:bg-quiz-highlight text-white transition-all"
+      >
+        Test starten
+      </Button>
     </div>
   );
 };
