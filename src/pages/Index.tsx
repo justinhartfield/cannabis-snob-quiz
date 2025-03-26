@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import CannabisQuiz from '@/components/CannabisQuiz/CannabisQuiz';
+import NewsletterCTA from '@/components/NewsletterCTA';
 
 const Index = () => {
   const [showQuiz, setShowQuiz] = useState(false);
@@ -22,7 +23,9 @@ const Index = () => {
         <div className="w-full max-w-xl mb-8 flex flex-col items-center">
           <CannabisQuiz />
           
-          <footer className="mt-8 flex flex-col items-center gap-2">
+          <NewsletterCTA />
+          
+          <footer className="mt-4 flex flex-col items-center gap-2">
             <p className="text-sm text-quiz-secondary">
               Designed with precision for cannabis connoisseurs.
             </p>
