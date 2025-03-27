@@ -18,7 +18,8 @@ const Index = () => {
   
   return (
     <div className="min-h-screen flex flex-col items-center bg-white px-4 py-6">
-      <style jsx global>{`
+      <style>
+        {`
         /* Additional styles to ensure GIFs load properly */
         .quiz-score-circle {
           fill: none;
@@ -40,7 +41,8 @@ const Index = () => {
           height: auto;
           display: block;
         }
-      `}</style>
+        `}
+      </style>
       
       {/* Weed.de logo at the very top */}
       <div className="w-full flex justify-center mb-6">
