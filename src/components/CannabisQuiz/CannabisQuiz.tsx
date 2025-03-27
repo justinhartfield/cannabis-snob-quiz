@@ -49,6 +49,10 @@ const CannabisQuiz: React.FC = () => {
       case QuizState.QUESTION:
         return (
           <div>
+            {/* Question counter text */}
+            <div className="text-center mb-2 text-sm font-medium text-quiz-secondary">
+              Question {currentQuestionIndex + 1} of {quizQuestions.length}
+            </div>
             <div className="quiz-progress-bar mb-6">
               <div 
                 className="quiz-progress-bar-fill" 
