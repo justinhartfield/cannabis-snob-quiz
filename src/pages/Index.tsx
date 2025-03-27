@@ -18,6 +18,33 @@ const Index = () => {
   
   return (
     <div className="min-h-screen flex flex-col items-center bg-white px-4 py-6">
+      {/* CSS for GIF animations and fallbacks */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in-out forwards;
+          }
+          
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+          
+          .quiz-score-circle {
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+          }
+          
+          .animate-score-circle {
+            stroke-dasharray: 300;
+            stroke-dashoffset: calc(var(--score-offset, 0) * 3);
+            transition: stroke-dashoffset 1s ease-in-out;
+          }
+        `
+      }} />
+
       {/* Weed.de logo at the very top */}
       <div className="w-full flex justify-center mb-6">
         <a 

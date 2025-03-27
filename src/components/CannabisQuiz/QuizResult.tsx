@@ -32,6 +32,9 @@ const highScoreGifs = [
   "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExemRsMXB1Mnk3aGxtYmxreWpqdHU5czlodDRvbGthcG11Y2RzZ2RmNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3otPoUjcQZUkpJyHwk/giphy.gif", // mind blown
 ];
 
+// Fallback image in case GIFs fail to load
+const fallbackImage = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNm9oNjR5emYwOG1pOXZxdXVxZjh5OTN3NXl0dW1qZW14dDlqdjM1cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9J7tdYltWyXIY/giphy.gif";
+
 const QuizResult: React.FC<QuizResultProps> = ({
   result,
   score,
@@ -42,15 +45,22 @@ const QuizResult: React.FC<QuizResultProps> = ({
   const percentage = Math.round((score / totalQuestions) * 100);
   const [copied, setCopied] = useState(false);
   const couponCode = "CANNABISNOB50";
+  const [gifLoaded, setGifLoaded] = useState(false);
+  const [gifError, setGifError] = useState(false);
   
   // Select a random GIF based on score category
   const getRandomGif = () => {
-    if (percentage < 33) {
-      return lowScoreGifs[Math.floor(Math.random() * lowScoreGifs.length)];
-    } else if (percentage < 66) {
-      return mediumScoreGifs[Math.floor(Math.random() * mediumScoreGifs.length)];
-    } else {
-      return highScoreGifs[Math.floor(Math.random() * highScoreGifs.length)];
+    try {
+      if (percentage < 33) {
+        return lowScoreGifs[Math.floor(Math.random() * lowScoreGifs.length)];
+      } else if (percentage < 66) {
+        return mediumScoreGifs[Math.floor(Math.random() * mediumScoreGifs.length)];
+      } else {
+        return highScoreGifs[Math.floor(Math.random() * highScoreGifs.length)];
+      }
+    } catch (error) {
+      console.error("Error selecting GIF:", error);
+      return fallbackImage;
     }
   };
   
@@ -61,7 +71,16 @@ const QuizResult: React.FC<QuizResultProps> = ({
       const scoreOffset = 100 - percentage;
       circleRef.current.style.setProperty('--score-offset', `${scoreOffset}`);
     }
-  }, [percentage]);
+    
+    // Preload the GIF
+    const img = new Image();
+    img.onload = () => setGifLoaded(true);
+    img.onerror = () => {
+      console.error("Failed to load GIF:", randomGif);
+      setGifError(true);
+    };
+    img.src = randomGif;
+  }, [percentage, randomGif]);
 
   const handleCopyCode = () => {
     navigator.clipboard.writeText(couponCode);
@@ -105,13 +124,32 @@ const QuizResult: React.FC<QuizResultProps> = ({
         </div>
       </div>
       
-      {/* Animated GIF based on score */}
+      {/* Animated GIF based on score with error handling */}
       <div className="mb-6 flex justify-center">
-        <img 
-          src={randomGif} 
-          alt="Result reaction" 
-          className="rounded-lg w-full max-w-sm shadow-md animate-fade-in"
-        />
+        {gifError ? (
+          <img 
+            src={fallbackImage} 
+            alt="Result reaction" 
+            className="rounded-lg w-full max-w-sm shadow-md animate-fade-in"
+            onError={(e) => {
+              // If even the fallback fails, hide the image
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+            }}
+          />
+        ) : (
+          <img 
+            src={randomGif} 
+            alt="Result reaction" 
+            className="rounded-lg w-full max-w-sm shadow-md animate-fade-in"
+            onError={(e) => {
+              console.error("GIF failed to load, using fallback");
+              setGifError(true);
+              const target = e.target as HTMLImageElement;
+              target.src = fallbackImage;
+            }}
+          />
+        )}
       </div>
 
       <h2 className="text-2xl font-bold text-quiz-primary mb-2">
