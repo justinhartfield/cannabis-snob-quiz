@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { QuizResult as QuizResultType } from './quizData';
 import { Button } from '@/components/ui/button';
@@ -194,7 +193,7 @@ const QuizResult: React.FC<QuizResultProps> = ({
       
       <Button 
         onClick={onRestart}
-        className="bg-quiz-accent hover:bg-quiz-highlight text-white transition-all"
+        className="bg-weed-green hover:bg-weed-dark-green text-white transition-all"
       >
         Test wiederholen
       </Button>
