@@ -13,27 +13,24 @@ interface QuizResultProps {
   onRestart: () => void;
 }
 
-// Reliable direct links to GIFs with more stable hosting
+// Fun GIFs for each score category - updated with reliable sources
 const lowScoreGifs = [
-  "/lovable-uploads/993e06a7-5b70-4ffa-a81a-69448a5239ac.png", // Using the uploaded fallback image
-  "https://c.tenor.com/z5RLMmRxVzYAAAAd/baby-yoda-yoda.gif",
-  "https://i.imgur.com/Sw2wTd7.gif",
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXdyZWFmN2ZweXN5dzM2dTEwbmhiaG43OGxnbGZzNGlweWoyZmtsMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WJjLyXCVvro2I/giphy.gif", // facepalm
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGk3ajN2bzV2ejJ4cDU0YzZiZjF0Nnlid2F6Nzl4MnVmN3l3NG1qOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKqnN349PBUtGFO/giphy.gif", // not good
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcm0zdWVmMjYzaG42YzZkZDV2aDRuMWxja3RzcnB2bnJiNnQ2eHk3biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT5LMUnO4g3ySm3wjK/giphy.gif", // disappointed
 ];
 
 const mediumScoreGifs = [
-  "/lovable-uploads/993e06a7-5b70-4ffa-a81a-69448a5239ac.png", // Using the uploaded fallback image
-  "https://i.imgur.com/xvIYn1D.gif",
-  "https://i.imgur.com/jqg9EKT.gif",
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWVrZmN0Mmt6ZW1xZHd2NmRhMHNnZjJvOTVhbWdkN3VmbGk5aGEwZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l4FGnnlIwVYIgunDy/giphy.gif", // good job
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmM5bXY5czEwdmF1Z244YzcwNGxhcWdmbm1qMnlmeDdrZml2c2dneiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7rj2ZgttvgomY/giphy.gif", // thumbs up
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjB0Z3QxOWdtZWIwZzg5NGUwZGZuZnB4azZ1ZXdqNHJ5MGJrNDdrbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xUOxf7IfQeahXbsNUc/giphy.gif", // not bad
 ];
 
 const highScoreGifs = [
-  "/lovable-uploads/993e06a7-5b70-4ffa-a81a-69448a5239ac.png", // Using the uploaded fallback image
-  "https://i.imgur.com/E8Moh3h.gif",
-  "https://i.imgur.com/yNvYI8F.gif",
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNThrN3kwdjAwNGhuYmR0MDk0bjA0YnY2eXpkMGM3Mmp1cW4yYmpsdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jJQC2puVZpTMO4vGs0/giphy.gif", // celebration
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExenducWxndXUwdXU1Y2NhcmQ1YTQweGt5czV6cnh0Z3Fsb2RtamdxbixlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZWbeEcbeo0cKI/giphy.gif", // impressed
+  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExemRsMXB1Mnk3aGxtYmxreWpqdHU5czlodDRvbGthcG11Y2RzZ2RmNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3otPoUjcQZUkpJyHwk/giphy.gif", // mind blown
 ];
-
-// Guaranteed fallback image from the project
-const FALLBACK_IMAGE = "/lovable-uploads/b82e779f-a705-4173-9aaf-efd7add99b2a.png";
 
 const QuizResult: React.FC<QuizResultProps> = ({
   result,
@@ -44,34 +41,20 @@ const QuizResult: React.FC<QuizResultProps> = ({
   const circleRef = useRef<SVGCircleElement>(null);
   const percentage = Math.round((score / totalQuestions) * 100);
   const [copied, setCopied] = useState(false);
-  const [gifUrl, setGifUrl] = useState<string>(FALLBACK_IMAGE);
-  const [gifLoaded, setGifLoaded] = useState(false);
   const couponCode = "CANNABISNOB50";
   
-  // Initialize and load GIF
-  useEffect(() => {
-    // Select appropriate GIF category based on score
-    const gifCategory = percentage < 33 
-      ? lowScoreGifs 
-      : percentage < 66 
-        ? mediumScoreGifs 
-        : highScoreGifs;
-    
-    // Start with the first GIF in the appropriate category
-    const initialGif = gifCategory[0];
-    setGifUrl(initialGif);
-    
-    // Preload the gif
-    const img = new Image();
-    img.onload = () => {
-      setGifLoaded(true);
-    };
-    img.onerror = () => {
-      console.error("Failed to load initial GIF, trying fallback...");
-      setGifUrl(FALLBACK_IMAGE);
-    };
-    img.src = initialGif;
-  }, [percentage]);
+  // Select a random GIF based on score category
+  const getRandomGif = () => {
+    if (percentage < 33) {
+      return lowScoreGifs[Math.floor(Math.random() * lowScoreGifs.length)];
+    } else if (percentage < 66) {
+      return mediumScoreGifs[Math.floor(Math.random() * mediumScoreGifs.length)];
+    } else {
+      return highScoreGifs[Math.floor(Math.random() * highScoreGifs.length)];
+    }
+  };
+  
+  const randomGif = getRandomGif();
 
   useEffect(() => {
     if (circleRef.current) {
@@ -122,19 +105,12 @@ const QuizResult: React.FC<QuizResultProps> = ({
         </div>
       </div>
       
-      {/* GIF Display with proper fallback handling */}
+      {/* Animated GIF based on score */}
       <div className="mb-6 flex justify-center">
         <img 
-          src={gifLoaded ? gifUrl : FALLBACK_IMAGE}
+          src={randomGif} 
           alt="Result reaction" 
           className="rounded-lg w-full max-w-sm shadow-md animate-fade-in"
-          style={{ minHeight: "200px", objectFit: "cover" }}
-          onError={(e) => {
-            console.error("Image failed to load, using fallback");
-            const target = e.target as HTMLImageElement;
-            target.src = FALLBACK_IMAGE;
-            setGifLoaded(true); // Prevent error loop
-          }}
         />
       </div>
 
