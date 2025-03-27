@@ -6,7 +6,7 @@ import { Check, Copy } from 'lucide-react';
 
 const ResultCoupon: React.FC = () => {
   const [copied, setCopied] = useState(false);
-  const couponCode = "CANNABISNOB50";
+  const couponCode = "CANNABISSNOB50";
 
   const handleCopyCode = () => {
     navigator.clipboard.writeText(couponCode);
