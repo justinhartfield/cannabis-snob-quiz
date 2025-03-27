@@ -1,9 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+
+import React from 'react';
 import { QuizResult as QuizResultType } from './quizData';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Check, Copy, RefreshCw } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
 import ShareOnSocial from './ShareOnSocial';
+import ScoreCircle from './ScoreCircle';
+import ResultAnimation from './ResultAnimation';
+import ResultCoupon from './ResultCoupon';
 
 interface QuizResultProps {
   result: QuizResultType;
@@ -12,138 +15,21 @@ interface QuizResultProps {
   onRestart: () => void;
 }
 
-const lowScoreGifs = [
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXdyZWFmN2ZweXN5dzM2dTEwbmhiaG43OGxnbGZzNGlweWoyZmtsMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WJjLyXCVvro2I/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGk3ajN2bzV2ejJ4cDU0YzZiZjF0Nnlid2F6Nzl4MnVmN3l3NG1qOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKqnN349PBUtGFO/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcm0zdWVmMjYzaG42YzZkZDV2aDRuMWxja3RzcnB2bnJiNnQ2eHk3biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT5LMUnO4g3ySm3wjK/giphy.gif",
-];
-
-const mediumScoreGifs = [
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWVrZmN0Mmt6ZW1xZHd2NmRhMHNnZjJvOTVhbWdkN3VmbGk5aGEwZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l4FGnnlIwVYIgunDy/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmM5bXY5czEwdmF1Z244YzcwNGxhcWdmbm1qMnlmeDdrZml2c2dneiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7rj2ZgttvgomY/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjB0Z3QxOWdtZWIwZzg5NGUwZGZuZnB4azZ1ZXdqNHJ5MGJrNDdrbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xUOxf7IfQeahXbsNUc/giphy.gif",
-];
-
-const highScoreGifs = [
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNThrN3kwdjAwNGhuYmR0MDk0bjA0YnY2eXpkMGM3Mmp1cW4yYmpsdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jJQC2puVZpTMO4vGs0/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExenducWxndXUwdXU1Y2NhcmQ1YTQweGt5czV6cnh0Z3Fsb2RtamdxbixlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZWbeEcbeo0cKI/giphy.gif",
-  "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExemRsMXB1Mnk3aGxtYmxreWpqdHU5czlodDRvbGthcG11Y2RzZ2RmNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3otPoUjcQZUkpJyHwk/giphy.gif",
-];
-
-const fallbackImage = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNm9oNjR5emYwOG1pOXZxdXVxZjh5OTN3NXl0dW1qZW14dDlqdjM1cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9J7tdYltWyXIY/giphy.gif";
-
 const QuizResult: React.FC<QuizResultProps> = ({
   result,
   score,
   totalQuestions,
   onRestart,
 }) => {
-  const circleRef = useRef<SVGCircleElement>(null);
   const percentage = Math.round((score / totalQuestions) * 100);
-  const [copied, setCopied] = useState(false);
-  const couponCode = "CANNABISNOB50";
-  const [gifLoaded, setGifLoaded] = useState(false);
-  const [gifError, setGifError] = useState(false);
-  
-  const getRandomGif = () => {
-    try {
-      if (percentage < 33) {
-        return lowScoreGifs[Math.floor(Math.random() * lowScoreGifs.length)];
-      } else if (percentage < 66) {
-        return mediumScoreGifs[Math.floor(Math.random() * mediumScoreGifs.length)];
-      } else {
-        return highScoreGifs[Math.floor(Math.random() * highScoreGifs.length)];
-      }
-    } catch (error) {
-      console.error("Error selecting GIF:", error);
-      return fallbackImage;
-    }
-  };
-  
-  const randomGif = getRandomGif();
-
-  useEffect(() => {
-    if (circleRef.current) {
-      const scoreOffset = 100 - percentage;
-      circleRef.current.style.setProperty('--score-offset', `${scoreOffset}`);
-    }
-    
-    const img = new Image();
-    img.onload = () => setGifLoaded(true);
-    img.onerror = () => {
-      console.error("Failed to load GIF:", randomGif);
-      setGifError(true);
-    };
-    img.src = randomGif;
-  }, [percentage, randomGif]);
-
-  const handleCopyCode = () => {
-    navigator.clipboard.writeText(couponCode);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   return (
     <div className="text-center animate-scale-in">
       <div className="mb-6 flex justify-center">
-        <div className="relative w-40 h-40">
-          <svg className="w-full h-full" viewBox="0 0 100 100">
-            <circle
-              className="quiz-score-circle"
-              cx="50"
-              cy="50"
-              r="47"
-              stroke="#e6e8ec"
-            />
-            <circle
-              ref={circleRef}
-              className="quiz-score-circle animate-score-circle"
-              cx="50"
-              cy="50"
-              r="47"
-              stroke={
-                percentage < 33 ? "#ef4444" : 
-                percentage < 66 ? "#f59e0b" : 
-                "#10b981"
-              }
-            />
-          </svg>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div>
-              <div className="text-3xl font-bold text-quiz-primary">
-                {score}/{totalQuestions}
-              </div>
-              <div className="text-sm text-quiz-secondary">Punkte</div>
-            </div>
-          </div>
-        </div>
+        <ScoreCircle score={score} totalQuestions={totalQuestions} />
       </div>
       
-      <div className="mb-6 flex justify-center">
-        {gifError ? (
-          <img 
-            src={fallbackImage} 
-            alt="Result reaction" 
-            className="rounded-lg w-full max-w-sm shadow-md animate-fade-in"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.style.display = 'none';
-            }}
-          />
-        ) : (
-          <img 
-            src={randomGif} 
-            alt="Result reaction" 
-            className="rounded-lg w-full max-w-sm shadow-md animate-fade-in"
-            onError={(e) => {
-              console.error("GIF failed to load, using fallback");
-              setGifError(true);
-              const target = e.target as HTMLImageElement;
-              target.src = fallbackImage;
-            }}
-          />
-        )}
-      </div>
+      <ResultAnimation percentage={percentage} />
 
       <h2 className="text-2xl font-bold text-quiz-primary mb-2">
         {result.title}
@@ -162,26 +48,7 @@ const QuizResult: React.FC<QuizResultProps> = ({
         isQuizComplete={true} 
       />
       
-      <div className="mb-8 p-4 bg-gradient-to-r from-green-100 to-green-50 rounded-lg shadow-sm">
-        <h3 className="text-lg font-bold text-green-800 mb-2">Dein Cannabis Experten Rabatt</h3>
-        <p className="text-sm text-green-700 mb-3">Sichere dir 50% Rabatt auf dein nächstes Rezept bei WEED.de</p>
-        
-        <div className="flex gap-2">
-          <Input
-            value={couponCode}
-            readOnly
-            className="text-center font-mono font-bold text-green-800 bg-white border-green-300"
-          />
-          <Button
-            onClick={handleCopyCode}
-            className="bg-green-600 hover:bg-green-700 text-white"
-            size="icon"
-            type="button"
-          >
-            {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-          </Button>
-        </div>
-      </div>
+      <ResultCoupon />
       
       <Button 
         onClick={onRestart}
