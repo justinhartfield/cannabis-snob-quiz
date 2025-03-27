@@ -18,6 +18,30 @@ const Index = () => {
   
   return (
     <div className="min-h-screen flex flex-col items-center bg-white px-4 py-6">
+      <style jsx global>{`
+        /* Additional styles to ensure GIFs load properly */
+        .quiz-score-circle {
+          fill: none;
+          stroke-width: 4;
+          transition: 0.5s;
+          transform: rotate(-90deg);
+          transform-origin: 50% 50%;
+        }
+        
+        .animate-score-circle {
+          stroke-dasharray: 295;
+          stroke-dashoffset: calc(295 * var(--score-offset) / 100);
+          transition: stroke-dashoffset 1s ease-out;
+        }
+        
+        /* Ensure images display properly */
+        img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+        }
+      `}</style>
+      
       {/* Weed.de logo at the very top */}
       <div className="w-full flex justify-center mb-6">
         <a 
