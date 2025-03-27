@@ -20,11 +20,11 @@ const Index = () => {
     <div className="min-h-screen flex flex-col items-center bg-white px-4 py-6">
       <style>
         {`
-        /* Additional styles to ensure GIFs load properly */
+        /* Additional styles to ensure images load properly */
         .quiz-score-circle {
           fill: none;
           stroke-width: 4;
-          transition: 0.5s;
+          transition: stroke-dashoffset 0.5s;
           transform: rotate(-90deg);
           transform-origin: 50% 50%;
         }
@@ -35,11 +35,20 @@ const Index = () => {
           transition: stroke-dashoffset 1s ease-out;
         }
         
-        /* Ensure images display properly */
+        /* Improved image display rules */
         img {
           max-width: 100%;
           height: auto;
           display: block;
+        }
+        
+        /* Ensure result images display properly */
+        .quiz-result-image {
+          width: 100%;
+          max-width: 300px;
+          margin: 0 auto;
+          border-radius: 8px;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         `}
       </style>
